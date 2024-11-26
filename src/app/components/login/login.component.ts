@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 @Component({
-  selector: 'login',
-  providers: [AuthService],
-  standalone:true,
- imports:[ReactiveFormsModule,MatFormFieldModule,MatInputModule],
-  templateUrl:`login.component.html`
+    selector: 'login',
+    providers: [AuthService],
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+    templateUrl: `login.component.html`,
+    standalone: true
 })
 export class LoginComponent {
   loginForm: FormGroup

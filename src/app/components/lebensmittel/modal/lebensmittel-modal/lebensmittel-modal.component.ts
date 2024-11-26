@@ -19,31 +19,18 @@ import { Dialog } from '@angular/cdk/dialog';
 
 
 @Component({
-
-  selector: 'app-lebensmittel-modal',
-
-  standalone: true,
-
-  imports: [
-
-    MatFormFieldModule,
-
-    MatInputModule,
-
-    MatButtonModule,
-
-    MatError,
-
-    CommonModule,
-
-    ReactiveFormsModule
-
-  ],
-
-  templateUrl: './lebensmittel-modal.component.html',
-
-  styleUrl: './lebensmittel-modal.component.scss'
-
+    selector: 'app-lebensmittel-modal',
+    imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatError,
+        CommonModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './lebensmittel-modal.component.html',
+    styleUrl: './lebensmittel-modal.component.scss',
+    standalone: true
 })
 
 export class LebensmittelModalComponent implements OnInit {

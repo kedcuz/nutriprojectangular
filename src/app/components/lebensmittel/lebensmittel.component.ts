@@ -18,21 +18,21 @@ import { MatDialog } from '@angular/material/dialog';
 import { LebensmittelModalComponent } from './modal/lebensmittel-modal/lebensmittel-modal.component'; // Adjust the path as needed
 import { E } from '@angular/cdk/keycodes';
 @Component({
-  selector: 'app-lebensmittel',
-  standalone: true,
-  imports: [CommonModule,
-    MatTableModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIcon,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatGridListModule,
-    MatMenuModule],
-  templateUrl: './lebensmittel.component.html',
-  styleUrl: './lebensmittel.component.scss',
-  providers: [AuthService],
+    selector: 'app-lebensmittel',
+    imports: [CommonModule,
+        MatTableModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIcon,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatGridListModule,
+        MatMenuModule],
+    templateUrl: './lebensmittel.component.html',
+    styleUrl: './lebensmittel.component.scss',
+    providers: [AuthService],
+    standalone: true
 })
 export class LebensmittelComponent implements OnInit {
   readonly dialog = inject(MatDialog);

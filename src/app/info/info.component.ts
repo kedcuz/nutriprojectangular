@@ -4,11 +4,11 @@ import { Lebensmittel } from '../model/lebensmittel.model';
 import { Konstanten } from '../konstanten';
 import { CommonModule } from '@angular/common';
 @Component({
-  selector: 'app-info',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './info.component.html',
-  styleUrl: './info.component.scss'
+    selector: 'app-info',
+    imports: [CommonModule],
+    templateUrl: './info.component.html',
+    styleUrl: './info.component.scss',
+    standalone: true
 })
 export class InfoComponent {
   

@@ -6,12 +6,11 @@ import { CommonModule } from '@angular/common';
 import { Konstanten } from './konstanten';
 import { InfoComponent } from "./info/info.component";
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, ReactiveFormsModule, FormsModule, CommonModule, InfoComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  providers:[AuthService]
+    selector: 'app-root',
+    imports: [RouterOutlet, ReactiveFormsModule, FormsModule, CommonModule, InfoComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    providers: [AuthService], standalone: true  
 })
 export class AppComponent {
   constructor( private authService: AuthService, private router: Router){}
