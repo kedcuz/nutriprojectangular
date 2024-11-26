@@ -15,3 +15,14 @@
     width: 300px;
 }
 .mat-mdc-card{background-color: white;}
+.mat-toolbar{
+    background-color: white;
+    justify-content: end;
+    .mat-mdc-form-field{justify-self: center;}
+}
+.mat-mdc-form-field-subscript-wrapper{
+    display: none;
+}
+.mat-mdc-card-actions{
+    justify-content: end;
+}       

@@ -16,7 +16,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { LebensmittelModalComponent } from './modal/lebensmittel-modal/lebensmittel-modal.component'; // Adjust the path as needed
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbar } from '@angular/material/toolbar';
 @Component({
     selector: 'app-lebensmittel',
     imports: [CommonModule,
@@ -28,7 +29,7 @@ import { LebensmittelModalComponent } from './modal/lebensmittel-modal/lebensmit
         ReactiveFormsModule,
         MatCardModule,
         MatGridListModule,
-        MatMenuModule],
+        MatMenuModule,MatButtonModule,MatToolbar],
     templateUrl: './lebensmittel.component.html',
     styleUrl: './lebensmittel.component.scss',
     providers: [AuthService,],

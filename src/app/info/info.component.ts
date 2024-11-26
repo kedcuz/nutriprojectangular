@@ -3,10 +3,10 @@ import { HttpClient} from '@angular/common/http';
 import { Lebensmittel } from '../model/lebensmittel.model';
 import { Konstanten } from '../konstanten';
 import { CommonModule } from '@angular/common';
-
+import { MatCardModule } from '@angular/material/card';
 @Component({
     selector: 'app-info',
-    imports: [CommonModule], 
+    imports: [CommonModule,MatCardModule], 
     templateUrl: './info.component.html',
     styleUrls: ['./info.component.scss'],
     standalone: true

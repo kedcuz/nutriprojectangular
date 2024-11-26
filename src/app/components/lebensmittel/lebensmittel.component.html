@@ -1,15 +1,20 @@
 <div class="container"><h1>Lebensmittel verwalten</h1>
-    <div class="action-buttons">
-        <button mat-raised-button color="primary" (click)="getAllLebensmittel()">Neues Lebensmittel erstellen</button>
-    </div>
-    <mat-form-field>
-        <input matInput type="search" [formControl]="searchControl">
-        <button matSuffix mat-icon-button aria-label="Search">
-            <mat-icon>search</mat-icon>
-        </button>
-    </mat-form-field>
+    
+    
 </div>
-<mat-stroked-button mat-button [matMenuTriggerFor]="menu">Sortieren</mat-stroked-button>
+<mat-toolbar>
+    <div style="display: flex; justify-content: center; width: 100%;">
+        <mat-form-field>
+            <input matInput type="search" [formControl]="searchControl">
+            <button matSuffix mat-icon-button aria-label="Search">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <button mat-fab [matMenuTriggerFor]="menu"> <mat-icon>filter_list</mat-icon></button>
+    <button mat-fab extended (click)="getAllLebensmittel()"><mat-icon>add</mat-icon> Lebensmittel</button>
+</mat-toolbar>
+
 <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="sortLebensmittel('name')"> Name</button>
     <button mat-menu-item (click)="sortLebensmittel('kalorien')"> Kalorien</button>
@@ -17,7 +22,7 @@
 </mat-menu>
 <div class="container">
     <div class="card-container">
-        <mat-card *ngFor="let element of lebensmittelliste" (click)="editLebensmittel(element)" class="lebensmittel-card" >
+        <mat-card *ngFor="let element of lebensmittelliste" class="lebensmittel-card" >
             <mat-card-header>
                 <mat-card-title>{{element.name}}</mat-card-title>
                 <mat-card-subtitle>ID: {{element.id}}</mat-card-subtitle>
@@ -28,7 +33,7 @@
                 <p><strong>Gewicht:</strong> {{element.gewicht}}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-stroked-button (click)="editLebensmittel(element)">Bearbeiten</button>
+                <button mat-fab (click)="editLebensmittel(element)"><mat-icon>edit</mat-icon></button>
             </mat-card-actions>
         </mat-card>
     </div>

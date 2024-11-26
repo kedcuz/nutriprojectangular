@@ -15,7 +15,8 @@ export class LebensmittelService {
 
   saveLebensmittel(lebensmittel: Lebensmittel): Observable<Lebensmittel> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.httpClient.post<Lebensmittel>(this.apiUrl, lebensmittel, { headers });
+    console.log("Saving Lebensmittel:", lebensmittel.id);
+    return this.httpClient.put<Lebensmittel>(this.apiUrl+"/"+lebensmittel.id, lebensmittel, { headers });
   }
 
   deleteLebensmittel(id: string): Observable<void> {
