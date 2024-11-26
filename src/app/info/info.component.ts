@@ -1,37 +1,36 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, inject, Inject, Injectable, OnInit } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
 import { Lebensmittel } from '../model/lebensmittel.model';
 import { Konstanten } from '../konstanten';
 import { CommonModule } from '@angular/common';
+
 @Component({
     selector: 'app-info',
-    imports: [CommonModule],
+    imports: [CommonModule], 
     templateUrl: './info.component.html',
-    styleUrl: './info.component.scss',
+    styleUrls: ['./info.component.scss'],
     standalone: true
 })
-export class InfoComponent {
+
+export class InfoComponent implements OnInit {
   
   anzahlLebensmittel = 0;
   anzahlRezepte = 0;
- 
+  private httpClient: HttpClient = inject(HttpClient);
+  constructor( ) {}
   
-  constructor(private httpClient:HttpClient){
-   
-  }
-  getAllLebensmittel(){
-    this.httpClient.get<Lebensmittel[]>(Konstanten.restApiEndpoint+"/api/lebensmittel").subscribe({
+  getAllLebensmittel() {
+    this.httpClient.get<Lebensmittel[]>(Konstanten.restApiEndpoint + "/api/lebensmittel").subscribe({
       next: (response) => {
         this.anzahlLebensmittel = response.length;
       },
       error: (error) => {
         console.error('Error fetching Lebensmittel:', error);
       }
-    }
-    );
-  }
-  ngOnInit(){
-    this.getAllLebensmittel()
+    });
   }
 
+  ngOnInit() {
+    this.getAllLebensmittel();
+  }
 }

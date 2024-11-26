@@ -1,14 +1,14 @@
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+
+import { Inject, Injectable } from '@angular/core';
 import { User } from './model/user.model';
 import moment from 'moment';
 import { Router } from '@angular/router';
 import { Konstanten } from './konstanten';
-import { HttpHeaders } from '@angular/common/http';
-@Injectable()
-export class AuthService {
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-  constructor(private http: HttpClient,private router: Router) {
+@Injectable({providedIn: 'root'})
+export class AuthService {
+  constructor(@Inject(HttpClient)private http: HttpClient,@Inject(Router) private router: Router) {
     
   }
 

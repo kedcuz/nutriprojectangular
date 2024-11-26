@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Lebensmittel } from '../../../../model/lebensmittel.model';
-import { Dialog } from '@angular/cdk/dialog';
 
 
 
@@ -38,7 +37,7 @@ export class LebensmittelModalComponent implements OnInit {
   lebensmittelForm: FormGroup = new FormGroup({});
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {lebensmittel: Lebensmittel},private fb: FormBuilder) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {lebensmittel: Lebensmittel},@Inject(FormBuilder) private fb: FormBuilder) {}
 
 
 

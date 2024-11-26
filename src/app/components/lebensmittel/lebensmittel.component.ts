@@ -1,5 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { HttpHeaders, provideHttpClient,HttpClient} from '@angular/common/http';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { Konstanten } from '../../konstanten';
 import { AuthService } from '../../auth-service.service';
 import { Lebensmittel } from '../../model/lebensmittel.model';
@@ -16,7 +16,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { LebensmittelModalComponent } from './modal/lebensmittel-modal/lebensmittel-modal.component'; // Adjust the path as needed
-import { E } from '@angular/cdk/keycodes';
+
 @Component({
     selector: 'app-lebensmittel',
     imports: [CommonModule,
@@ -31,7 +31,7 @@ import { E } from '@angular/cdk/keycodes';
         MatMenuModule],
     templateUrl: './lebensmittel.component.html',
     styleUrl: './lebensmittel.component.scss',
-    providers: [AuthService],
+    providers: [AuthService,],
     standalone: true
 })
 export class LebensmittelComponent implements OnInit {
@@ -41,12 +41,10 @@ export class LebensmittelComponent implements OnInit {
   displayedColumns = ["Name", "Kalorien", "Vitamine", "Gewicht", "Actions"]
   isExpansionDetailRow = (index: number, row: any) => row.hasOwnProperty('detailRow');
   searchControl = new FormControl();
-  constructor(private httpClient: HttpClient) { }
+  constructor(@Inject(HttpClient) private httpClient: HttpClient) { }
   ngOnInit(): void {
     
     this.getAllLebensmittel()
-    console.log(this.lebensmittelliste)
-
     this.searchControl.valueChanges.subscribe(value => {
       if (value) {
         this.searchLebensmittel(value);
@@ -57,13 +55,12 @@ export class LebensmittelComponent implements OnInit {
   }
 
   getAllLebensmittel() {
-    console.log(this.httpClient)
     this.httpClient.get<Lebensmittel[]>(Konstanten.restApiEndpoint + "/api/lebensmittel").subscribe(
-      (response) => {
+      (response: any[]) => {
         this.lebensmittelliste = response.map(item => ({ ...item, detailRow: true }));
 
       },
-      (error) => {
+      (error: any) => {
         console.error('Error fetching Lebensmittel:', error);
       }
     );
@@ -73,10 +70,10 @@ export class LebensmittelComponent implements OnInit {
       'Content-Type': 'text/plain'
     });
     this.httpClient.post<Lebensmittel[]>(Konstanten.restApiEndpoint + "/api/lebensmittel/search", name, { headers }).subscribe(
-      (response) => {
+      (response: any[]) => {
         this.lebensmittelliste = response.map(item => ({ ...item, detailRow: true }));
       },
-      (error) => {
+      (error: any) => {
         console.error('Error searching Lebensmittel:', error);
       }
     );
