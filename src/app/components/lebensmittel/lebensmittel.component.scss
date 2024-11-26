@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.lebensmittel-card {
+    width: 300px;
+}
+.mat-mdc-card{background-color: white;}

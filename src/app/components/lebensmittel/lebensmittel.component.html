@@ -1,0 +1,94 @@
+<div class="container">><h1>Lebensmittel verwalten</h1>
+    <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="getAllLebensmittel">Neues Lebensmittel erstellen</button>
+    </div>
+    <mat-form-field>
+        <input matInput type="search" [formControl]="searchControl">
+        <button matSuffix mat-icon-button aria-label="Search">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+<mat-stroked-button mat-button [matMenuTriggerFor]="menu">Sortieren</mat-stroked-button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="sortLebensmittel('name')"> Name</button>
+    <button mat-menu-item (click)="sortLebensmittel('kalorien')"> Kalorien</button>
+    <button mat-menu-item (click)="sortLebensmittel('vitamine')">Vitamine</button>
+</mat-menu>
+<div class="container">
+    <div class="card-container">
+        <mat-card *ngFor="let element of lebensmittelliste" (click)="editLebensmittel(element)" class="lebensmittel-card" >
+            <mat-card-header>
+                <mat-card-title>{{element.name}}</mat-card-title>
+                <mat-card-subtitle>ID: {{element.id}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p><strong>Kalorien:</strong> {{element.kalorien}}</p>
+                <p><strong>Vitamine:</strong> {{element.vitamine}}</p>
+                <p><strong>Gewicht:</strong> {{element.gewicht}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-stroked-button (click)="editLebensmittel(element)">Bearbeiten</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <!-- <mat-grid-list cols="8" class="maincontainer">
+
+<mat-grid-tile colspan="0" class="container" >
+    <table mat-table [dataSource]="lebensmittelliste" multiTemplateDataRows="true">
+        <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Kalorien">
+            <th mat-header-cell *matHeaderCellDef> Kalorien </th>
+            <td mat-cell *matCellDef="let element"> {{element.kalorien}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Vitamine">
+            <th mat-header-cell *matHeaderCellDef> Vitamine </th>
+            <td mat-cell *matCellDef="let element"> {{element.vitamine}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Gewicht">
+            <th mat-header-cell *matHeaderCellDef> Gewicht </th>
+            <td mat-cell *matCellDef="let element"> {{element.gewicht}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-stroked-button (click)="editRow(element)">Bearbeiten</button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Details for {{element.name}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div>
+                        <p><strong>ID:</strong> {{element.id}}</p>
+                        <p><strong>Name:</strong> {{element.name}}</p>
+                        <p><strong>Kalorien:</strong> {{element.kalorien}}</p>
+                        <p><strong>Vitamine:</strong> {{element.vitamine}}</p>
+                        <p><strong>Gewicht:</strong> {{element.gewicht}}</p>
+                    </div>
+                </mat-expansion-panel>
+            </td>
+        </ng-container> 
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow" class="expanded-row">         
+    </table>
+</mat-grid-tile>
+<mat-grid-tile colspan="8" class="container">
+    
+      
+    
+</mat-grid-tile>
+</mat-grid-list> -->
+</div>
