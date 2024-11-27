@@ -1,6 +1,5 @@
-<div class="container"><h1>Lebensmittel verwalten</h1>
-    
-    
+<div class="container">
+    <h1>Lebensmittel verwalten</h1>
 </div>
 <mat-toolbar>
     <div style="display: flex; justify-content: center; width: 100%;">
@@ -22,7 +21,7 @@
 </mat-menu>
 <div class="container">
     <div class="card-container">
-        <mat-card *ngFor="let element of lebensmittelliste" class="lebensmittel-card" >
+        <mat-card *ngFor="let element of lebensmittelliste" class="lebensmittel-card">
             <mat-card-header>
                 <mat-card-title>{{element.name}}</mat-card-title>
                 <mat-card-subtitle>ID: {{element.id}}</mat-card-subtitle>

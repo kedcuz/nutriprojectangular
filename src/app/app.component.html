@@ -20,23 +20,27 @@
   
 </header>
 <a *ngIf="" href="login">Login</a>
-<main class="main">
-  <div class="content">
-    
-    
-    
-    <router-outlet></router-outlet>
-  </div>
+<main class="main"><button type="button" mat-button (click)="drawer.toggle()">
+  Menu
+</button>
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <p>Auto-resizing sidenav</p>
+      @if (showFiller) {
+        <p>Lorem, ipsum dolor sit amet consectetur.</p>
+      }
+      <button (click)="showFiller = !showFiller" mat-raised-button>
+        Toggle extra text
+      </button>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <router-outlet></router-outlet>
+      
+    </div>
+  
+  </mat-drawer-container>
+  
 </main>
 <Footer></Footer>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet />

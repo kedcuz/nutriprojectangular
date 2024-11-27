@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import moment from 'moment';
+import moment, { now } from 'moment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -11,14 +11,14 @@ export class AuthGuard implements CanActivate {
     const expires_at = localStorage.getItem('expires_at');
 
     if (token && expires_at) {
-      const expirationTime = moment.unix(Number(expires_at));
-      const currentTime = moment();
-
-      if (currentTime.isBefore(expirationTime)) {
+      const expirationTime :number = +expires_at;
+      const currentTime = +moment();
+      
+      if (currentTime>expirationTime) {
         return true;
       } else {
         localStorage.removeItem('id_token');
-      localStorage.removeItem('expires_at');
+        localStorage.removeItem('expires_at');
         this.router.navigate(['/login']);
         return false;
       }
