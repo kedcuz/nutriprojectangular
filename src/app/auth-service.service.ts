@@ -5,6 +5,7 @@ import moment from 'moment';
 import { Router } from '@angular/router';
 import { Konstanten } from './konstanten';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -27,10 +28,11 @@ export class AuthService {
   }
         
   private setSession(authResult:any) {
-      const expiresAt = moment().add(authResult.expiresIn,'second');
+    const decodedToken: any = jwtDecode(authResult);
+    const expiresAt = moment.unix(decodedToken.exp);
 
-      localStorage.setItem('id_token', authResult);
-      localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+    localStorage.setItem('id_token', authResult);
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }          
 
   logout() {

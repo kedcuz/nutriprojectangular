@@ -16,8 +16,10 @@
 }
 .mat-mdc-card{background-color: white;}
 .mat-toolbar{
-    background-color: white;
+    
     justify-content: end;
+    
+    margin: 10px 0;
     .mat-mdc-form-field{justify-self: center;}
 }
 .mat-mdc-form-field-subscript-wrapper{

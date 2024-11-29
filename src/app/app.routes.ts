@@ -10,5 +10,6 @@ export const routes: Routes = [
     {path:"",component:MainComponent,canActivate:[AuthGuard]},
     {path:"login",component:LoginComponent},
     {path:"lebensmittel",component:LebensmittelComponent,canActivate:[AuthGuard]},
-    {path:"vitamine",component:VitamineComponent,canActivate:[AuthGuard]}
+    {path:"vitamine",component:VitamineComponent,canActivate:[AuthGuard]},
+    {path:"rezepte",component:VitamineComponent,canActivate:[AuthGuard]}
 ];

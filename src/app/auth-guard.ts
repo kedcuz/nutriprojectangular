@@ -12,13 +12,12 @@ export class AuthGuard implements CanActivate {
 
     if (token && expires_at) {
       const expirationTime :number = +expires_at;
-      const currentTime = +moment();
+      const currentTime:number = +moment();
       
-      if (currentTime>expirationTime) {
+      if (currentTime<expirationTime) {
         return true;
       } else {
-        localStorage.removeItem('id_token');
-        localStorage.removeItem('expires_at');
+        
         this.router.navigate(['/login']);
         return false;
       }

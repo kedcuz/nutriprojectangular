@@ -6,3 +6,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
+html .mat-mdc-fab.mat-accent {
+    --mdc-fab-container-color: #41d873;
+    --mat-fab-foreground-color:rgb(178, 243, 181);
+}
+.mat-mdc-fab{color: white;}

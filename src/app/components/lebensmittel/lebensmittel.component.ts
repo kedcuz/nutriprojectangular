@@ -39,7 +39,6 @@ export class LebensmittelComponent implements OnInit {
   readonly dialog = inject(MatDialog);
   editedLebensmittel: Lebensmittel = new Lebensmittel();
   lebensmittelliste: Array<Lebensmittel> = []
-  displayedColumns = ["Name", "Kalorien", "Vitamine", "Gewicht", "Actions"]
   isExpansionDetailRow = (index: number, row: any) => row.hasOwnProperty('detailRow');
   searchControl = new FormControl();
   constructor(@Inject(HttpClient) private httpClient: HttpClient) { }
